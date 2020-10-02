@@ -1,0 +1,65 @@
+import csv
+from Arrays import Array3D
+def main():
+   archivos = Array3D(2,33,13)   #2 años,  33 estados, 14 datos
+   r = 0
+   c = 0
+   for ano in range(2017,2019,1):
+      with open(str(ano)+"Precip.csv" , newline='') as file:
+         reader = csv.reader(file)
+         for row in reader:
+            for col in row:
+               if c == 0:
+                  print("no guarda")
+               else:
+                  if (r<2):
+                     print("no guarda")
+                  else:
+                     archivos.set_item(ano-2017,r-3,c,col)
+                     c += 1
+            r += 1
+            c = 0
+         r = 0
+   print("exito al guardar todo el archivo")
+
+   a = int(input('Año (2017 o 2018)'))
+   e = int(input('Edo (1-32)'))
+   m = int(input('Mes (1-12)'))
+
+   #AÑO ESTADO MES
+   print(f"En el estado {archivos.get_item(a-2017,e,m-m)} llovio un promedio de {archivos.get_item(a-2017,e,m)} centimetros cubicos en el mes de {archivos.get_item(a-2017,e-e,m)} de {a} ")
+
+   #ESTADO MES
+   s = 0
+   for an in range(0,1,1):
+      i = archivo.get_item(an,e,m)
+      s = s + i
+   d = s/33
+   print(f"Del año 1985 al 2019 en el mes de {archivos.get_item(a-2017,e-e,m)} del estado {archivos.get_item(a-2017,e,m-m)} hay un promedio de {d} centimetros cubicos")
+
+   #ESTADO
+   s = 0
+   sp = 0
+   for an in range(0,1,1):
+      for me in range(1,13,1):
+         i = archivo.get_item(an,e,me)
+         s = s + i
+      p = s/12
+      sp = (sp + p)/33
+   print(f"Del año 1985 al 2018 en todos los meses del estado de {archivos.get_item(a-2017,e,m-m)} hay un promedio de {sp}")
+
+   #promedio total
+   s = 0
+   sp = 0
+   spp = 0 
+   for an in range(0,1,1):
+      for es in range(1,33,1):
+         for me in range(1,13,1):
+               i = archivo.get_item(an,es,me)
+               s = s + i
+         p = s/12
+         sp = (sp + p)/32
+      spp = (spp + sp)/33
+   print(f"El promedio total de todos los años, los meses y los estados de Mexico es de {spp}")
+
+main()
