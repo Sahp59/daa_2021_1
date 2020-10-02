@@ -1,0 +1,94 @@
+class  Array:
+    def __init__(self , n):
+        self.__n = n          #con __ se hace privado
+        self.__arreglo = []
+        for i in range(0,n,1):
+            self.__arreglo.append(0) #0 o none
+
+    def length(self): #regresa el tamaño del arreglo
+        return self.__n
+
+    def get_item(self , index): #va a regresar el elemento en la posicion correspondiente (index)
+        return self.__arreglo[index]
+
+    def set_item(self , index ,  value):
+        self.__arreglo[index] = value
+
+    def clearing (self , value):
+        for i in range (0,self.__n,1):
+            self.__arreglo[i] = value
+
+    def to_string(self):
+        #print(f"TAMAÑO DEL ARREGLO = {self.__n}")
+        #print(self.__arreglo)
+        return self.__arreglo
+
+#ADT 2D
+        
+class Array2D:
+    def __init__(self , rows, cols ):
+        self.__rows=rows
+        self.__cols=cols
+        self.__arreglo=[]
+
+        for r in range(self.__rows):
+            tmp = []
+            for c in range(self.__cols):
+                tmp.append(0)
+            self.__arreglo.append(tmp)
+
+    def to_string(self):
+        for i in range(self.__rows):
+            print(f'{self.__arreglo[i]}')
+    #ROWS    
+    def set_num_rows(self , rows):
+        return self.__rows
+    def get_num_rows(self):
+        return self.__rows
+    #COLS
+    def set_num_cols(self , cols):
+        return self.__cols
+    def get_num_cols(self):
+        return self.__cols
+    #ITEM ARREGLO 
+    def set_item(self , rows , cols , value):
+        self.__arreglo[rows][cols] = value
+    def get_item(self , rows , cols):
+        return self.__arreglo[rows][cols]
+    #CLEARIN
+    def clearing(self , Value):
+        for i in range(self.__rows):
+            for j in range(self.__cols):
+                self.__arreglo[i][j] = Value
+#ADT 3D
+class Array3D:
+    def __init__(self , depth , rows , cols):
+        self.__depth = depth
+        self.__cols = cols
+        self.__rows = rows
+        self.__arreglo = [[[0 for j in range(self.__cols)]for i in range(self.__rows)]for k in range(self.__depth)]
+    def get_num_depth(self):
+        return self.__depth
+    def get_num_cols(self):
+        return self.__cols
+    def get_num_rows(self):
+        return self.__rows
+
+    def set_item(self , depth , rows , cols , value):
+        self.__arreglo[depth][rows][cols] = value
+
+    def get_item(self , depth , rows , cols):
+        return self.__arreglo[depth][rows][cols]
+    
+    def clraring(self , value):
+        for i in range(self.__depth):
+            for j in range(self.__rows):
+                for k in range(self.__cols):
+                    self.__arreglo[i][j][k] = value
+    def to_string(self):
+        capa = 1
+        for layer in self.__arreglo:
+            print(f"-------capa {capa}-------")
+            for ren in layer :
+                print(ren)
+            capa = capa + 1
